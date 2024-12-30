@@ -8,7 +8,7 @@ const options = [
   {
     icon: <LuLayoutDashboard size={25} />,
     label: "Dashboard",
-    path: "/dashboard", 
+    path: "/dashboard",
   },
   {
     icon: <LuShield size={25} />,
@@ -26,16 +26,19 @@ const SideNav = () => {
   const path = usePathname();
 
   return (
-    <div className="w-[17%] border-r-2 border-black flex flex-col items-center">
+    <div className="w-[17%] border-r-2 border-gray-300 flex flex-col items-center">
       <div className="flex items-center justify-center gap-3 my-5">
         <img src="../logo.svg" alt="Logo" />
         <p className="text-2xl font-semibold">Learn Sphere</p>
       </div>
 
       <div className="w-full flex justify-center">
-        <button className="bg-primary text-white px-5 py-2 rounded-lg w-[80%]">
+        <Link
+          href="/create"
+          className="bg-primary text-white px-5 py-2 rounded-lg w-[80%] text-center"
+        >
           + Create New
-        </button>
+        </Link>
       </div>
 
       <div className="w-full mt-4">
