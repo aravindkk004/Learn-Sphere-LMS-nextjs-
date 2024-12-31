@@ -46,7 +46,7 @@ const SideNav = () => {
           <Link href={option.path} key={index}>
             <div
               className={`flex items-center gap-4 mx-6 px-4 py-3 mb-2 rounded-lg cursor-pointer hover:bg-gray-300 ${
-                path === option.path ? "bg-primary text-white" : ""
+                path === option.path ? "bg-gray-300" : ""
               }`}
             >
               {option.icon}

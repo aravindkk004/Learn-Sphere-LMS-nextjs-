@@ -1,27 +1,10 @@
-const options = [
-  {
-    image: "../exam_1.png",
-    name: "Exam",
-  },
-  {
-    image: "../job.png",
-    name: "Job Interview",
-  },
-  {
-    image: "../practice.png",
-    name: "Practice",
-  },
-  {
-    image: "../code.png",
-    name: "Coding Prep",
-  },
-  {
-    image: "../knowledge.png",
-    name: "Other",
-  },
-];
+"use client";
+import SelectOptions from "@/components/createForm/SelectOptions";
+import TopicPage from "@/components/createForm/TopicPage";
+import { useState } from "react";
 
 export default function Home() {
+  const [page, setPage] = useState(0);
   return (
     <>
       <div className="mt-[100px] flex flex-col items-center">
@@ -33,21 +16,26 @@ export default function Home() {
           project
         </p>
 
-        <div className="mt-[40px] w-[50%]">
-          <p className="text-xl font-semibold text-center">
-            For which you want to create your personal study material?
-          </p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 mt-6">
-            {options.map((option, index) => (
-              <div
-                key={index}
-                className="p-4 flex flex-col items-center justify-center border rounded-xl hover:border-secondary cursor-pointer"
-              >
-                <img src={option.image} className="w-[50px] h-[50px]" />
-                <h2 className="text-sm mt-2">{option.name}</h2>
-              </div>
-            ))}
-          </div>
+        {page === 0 ? <SelectOptions /> : null}
+        {page === 1 ? <TopicPage /> : null}
+
+        <div className="mt-[50px] flex justify-between items-center md:w-[80%]">
+          {page != 0 ? (
+            <button
+              className="border border-gray-400 px-4 py-2 rounded-lg"
+              onClick={() => setPage(page - 1)}
+            >
+              Previous
+            </button>
+          ) : (
+            <button></button>
+          )}
+          <button
+            className="bg-primary text-white px-4 py-2 rounded-lg"
+            onClick={() => setPage(page + 1)}
+          >
+            Next
+          </button>
         </div>
       </div>
     </>

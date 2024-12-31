@@ -15,7 +15,7 @@ const Dashboard = () => {
         <WelcomeBanner />
         <div className="my-4">
           <p className="text-2xl font-semibold">Your Study Material</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-4 gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 mt-2 gap-5">
             <MaterialCard />
           </div>
         </div>

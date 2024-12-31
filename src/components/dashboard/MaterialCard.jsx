@@ -1,18 +1,36 @@
-import React from "react";
+import Link from "next/link";
 
 const MaterialCard = () => {
+  const courseId = 2;
   return (
-    <div className="border border-gray-300 shadow-lg p-4 rounded-md">
-      <div className="flex items-center justify-between">
-        <img src="../knowledge.png" className="h-[50px]" />
-        <p className="bg-secondary text-white rounded-xl px-2">20 Dec 2024</p>
-      </div>
+    <div className="border rounded-lg shadow-md p-5">
       <div>
-        <p className="text-xl font-semibold mt-2">Easy Python</p>
-        <p className="my-2 line-clamp-2 text-gray-500">A Concise introduction to Python Programming fundamentals.</p>
+        <div className="flex justify-between items-center">
+          <img
+            alt="other"
+            loading="lazy"
+            width={50}
+            height={50}
+            decoding="async"
+            src="../knowledge.png"
+          />
+          <h2 className="text-[10px] p-1 px-2 rounded-full bg-secondary text-white">
+            20 Dec 2024
+          </h2>
+        </div>
+        <h2 className="mt-3 font-medium text-lg">Easy Python</h2>
+        <p className="text-sm line-clamp-2 text-gray-500 mt-2">
+          A Concise introduction to Python Programming fundamentals.
+        </p>
       </div>
+      <div className="mt-2"></div>
       <div className="flex justify-end">
-        <button className="bg-secondary px-4 text-white rounded-lg py-2">View</button>
+        <Link
+          href={`/course/${courseId}`}  
+          className="bg-secondary px-4 text-white rounded-lg py-2"
+        >
+          View
+        </Link>
       </div>
     </div>
   );
