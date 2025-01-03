@@ -4,11 +4,11 @@ const AnswerStatus = ({ status }) => {
   return (
     <>
       {!status ? (
-        <div className="bg-red-500 p-5 mt-5 rounded-lg text-white">
+        <div className="bg-red-500 p-5 mt-8 rounded-lg text-white">
           <h2>☹️ oops! Your answer is Wrong</h2>
         </div>
       ) : (
-        <div className="bg-green-400 p-5 rounded-lg mt-3">
+        <div className="bg-green-400 p-5 rounded-lg mt-8">
           <h2>🥳 Correct answer!!</h2>
         </div>
       )}

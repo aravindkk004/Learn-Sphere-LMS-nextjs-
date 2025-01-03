@@ -8,11 +8,12 @@ export default function Home() {
   const router = useRouter();
   const [chapterNo, setChapterNo] = useState(0);
   const totalChapters = 4;
+
   return (
     <>
       <TopNavbar />
       <div className="flex justify-center">
-        <div className="w-[60%] p-5">
+        <div className="w-full max-w-3xl p-5">
           <div className="flex items-center gap-10">
             <button
               className="border border-gray-300 rounded-lg px-3 py-2"

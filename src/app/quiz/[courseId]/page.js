@@ -3,16 +3,18 @@ import { ProgressBar } from "@/components/ProgressBar";
 import TopNavbar from "@/components/TopNavbar";
 import AnswerStatus from "@/components/quiz/AnswerStatus";
 import Quiz from "@/components/quiz/Quiz";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 export default function Home() {
   const [questionNo, setQuestionNo] = useState(1);
   const totalQuestion = 5;
+  const router = useRouter();
   return (
     <>
       <TopNavbar />
       <div className="flex justify-center mt-5">
-        <div className="w-[60%] p-5">
+        <div className="md:w-[60%] p-5">
           <h2 className="text-2xl text-center font-bold">Quiz</h2>
           <div className="flex items-center gap-10">
             <button

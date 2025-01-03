@@ -2,13 +2,14 @@
 import { useState } from "react";
 import { IoChevronDownSharp } from "react-icons/io5";
 
-const CustomDropdown = () => {
+const CustomDropdown = ({ setInputs }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState("Easy");
+  const [selectedOption, setSelectedOption] = useState("Select difficulty Level");
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
+    setInputs({ difficultyLevel: selectedOption });
   };
 
   return (
@@ -48,7 +49,14 @@ const CustomDropdown = () => {
   );
 };
 
-const TopicPage = () => {
+const TopicPage = ({ setInputs }) => {
+  const [topic, setTopic] = useState("");
+
+  const handleInputs = (value) => {
+    setTopic(value);
+    setInputs({ topic: value });
+  };
+
   return (
     <div className="mt-[40px] w-[40%]">
       <div>
@@ -59,11 +67,13 @@ const TopicPage = () => {
         <textarea
           placeholder="Start writing here"
           className="w-full border border-gray-300 p-4 rounded-lg mt-2"
+          onChange={(e) => handleInputs(e.target.value)}
+          value={topic}
         ></textarea>
       </div>
       <div className="mt-5">
         <p>Select the difficulty level</p>
-        <CustomDropdown />
+        <CustomDropdown setInputs={setInputs} />
       </div>
     </div>
   );

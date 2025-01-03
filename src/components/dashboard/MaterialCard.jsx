@@ -1,7 +1,15 @@
 import Link from "next/link";
+import { useEffect } from "react";
 
-const MaterialCard = () => {
-  const courseId = 2;
+const MaterialCard = ({ courses }) => {
+  useEffect(() => {
+    console.log(courses);
+  });
+  const formatDate = (timestamp) => {
+    const date = new Date(timestamp);
+    const options = { day: "2-digit", month: "short", year: "numeric" };
+    return date.toLocaleDateString("en-GB", options); 
+  };
   return (
     <div className="border rounded-lg shadow-md p-5">
       <div>
@@ -14,20 +22,22 @@ const MaterialCard = () => {
             decoding="async"
             src="../knowledge.png"
           />
-          <h2 className="text-[10px] p-1 px-2 rounded-full bg-secondary text-white">
-            20 Dec 2024
+          <h2 className="text-[10px] p-1 px-2 rounded-full bg-primary text-white">
+            {formatDate(courses?.createdAt)}
           </h2>
         </div>
-        <h2 className="mt-3 font-medium text-lg">Easy Python</h2>
+        <h2 className="mt-3 font-medium text-lg">
+          {courses?.courseLayout?.course_title}
+        </h2>
         <p className="text-sm line-clamp-2 text-gray-500 mt-2">
-          A Concise introduction to Python Programming fundamentals.
+          {courses?.courseLayout?.course_summary}
         </p>
       </div>
       <div className="mt-2"></div>
       <div className="flex justify-end">
         <Link
-          href={`/course/${courseId}`}  
-          className="bg-secondary px-4 text-white rounded-lg py-2"
+          href={`/course/${courses?.courseId}`}
+          className="bg-primary px-4 text-white rounded-lg py-2"
         >
           View
         </Link>

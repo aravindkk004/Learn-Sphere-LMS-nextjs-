@@ -26,7 +26,7 @@ const SideNav = () => {
   const path = usePathname();
 
   return (
-    <div className="w-[17%] border-r-2 border-gray-300 flex flex-col items-center">
+    <>
       <div className="flex items-center justify-center gap-3 my-5">
         <img src="../logo.svg" alt="Logo" />
         <p className="text-2xl font-semibold">Learn Sphere</p>
@@ -55,7 +55,7 @@ const SideNav = () => {
           </Link>
         ))}
       </div>
-    </div>
+    </>
   );
 };
 

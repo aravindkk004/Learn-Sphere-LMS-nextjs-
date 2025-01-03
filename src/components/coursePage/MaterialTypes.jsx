@@ -22,7 +22,7 @@ const MaterialTypes = ({ details }) => {
         <p className="text-sm">{details.desc}</p>
         {details.status === "Ready" && (
           <button
-            onClick={() => router.push(`/notes/${courseId}`)}
+            onClick={() => router.push(`${details.url}/${courseId}`)}
             className="border border-gray-300 px-4 py-1 rounded-lg mt-2 hover:bg-gray-200"
           >
             View

@@ -1,7 +1,11 @@
+"use client";
 import TopNavbar from "@/components/TopNavbar";
 import ChapterCard from "@/components/coursePage/ChapterCard";
 import MaterialTypes from "@/components/coursePage/MaterialTypes";
 import TitleCard from "@/components/coursePage/TitleCard";
+import axios from "axios";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const materialTypes = [
   {
@@ -9,34 +13,57 @@ const materialTypes = [
     image: "../notes.png",
     title: "Notes/ Chapters",
     desc: "Read notes to prepare it for Preparation",
+    url: "/notes",
   },
   {
-    status: "Generate",
+    status: "Ready",
     image: "../flashcard.png",
     title: "Flashcard",
     desc: "Flashcard to remember the concepts",
+    url: "/flashcard",
   },
   {
     status: "Ready",
     image: "../quiz.png",
     title: "Quiz",
     desc: "Great way to test your knowledge",
+    url: "/quiz",
   },
   {
-    status: "Generate",
+    status: "Ready",
     image: "../qa.png",
     title: "Question/Answer",
     desc: "Help to practice your learning",
+    url: "/questionAns",
   },
 ];
 export default function Home() {
+  const [courses, setCourses] = useState([]);
+  const params = useParams();
+  const courseId = params?.id;
+  useEffect(() => {
+    const getCourseDetails = async () => {
+      try {
+        const response = await axios.get(`/api/get-course-detail/${courseId}`);
+        console.log(response.data);
+        if (response.status == 200) {
+          const data = response.data;
+          setCourses(data);
+          console.log(typeof data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getCourseDetails();
+  }, []);
   return (
     <>
       <TopNavbar />
       <div className="flex justify-center">
-        <div className="w-[60%] p-5">
+        <div className="md:w-[60%] p-5">
           <div className="mt-2">
-            <TitleCard />
+            <TitleCard courses={courses} />
           </div>
           <div className="mt-6">
             <p className="text-lg font-medium">Study Material</p>
@@ -48,9 +75,11 @@ export default function Home() {
           </div>
           <div className="mt-6">
             <p className="text-lg font-medium">Chapters</p>
-            <div className="mt-4">
-              <ChapterCard />
-            </div>
+            {courses?.courseLayout?.chapters?.map((chapter, index) => (
+              <div className="mt-4" key={index}>
+                <ChapterCard chapter={chapter} />
+              </div>
+            ))}
           </div>
         </div>
       </div>

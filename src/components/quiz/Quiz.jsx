@@ -3,8 +3,8 @@ import React from "react";
 const Quiz = () => {
   return (
     <>
-      <div className="mt-6">
-        <h2 className="text-center font-bold text-2xl">
+      <div className="mt-12">
+        <h2 className="text-center font-bold md:text-2xl text-xl">
           What is the primary role of a REST API in a full stack application?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 mt-5">

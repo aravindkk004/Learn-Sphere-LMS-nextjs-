@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 const options = [
   {
     image: "../exam_1.png",
@@ -21,7 +23,14 @@ const options = [
   },
 ];
 
-const SelectOptions = () => {
+const SelectOptions = ({ setInputs }) => {
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleOptionClick = (option) => {
+    setSelectedOption(option.name);
+    setInputs({ courseType: option.name });
+  };
+
   return (
     <div className="mt-[40px] w-[50%]">
       <p className="text-lg text-center">
@@ -31,9 +40,18 @@ const SelectOptions = () => {
         {options.map((option, index) => (
           <div
             key={index}
-            className="p-4 flex flex-col items-center justify-center border rounded-xl hover:border-secondary cursor-pointer"
+            onClick={() => handleOptionClick(option)}
+            className={`p-4 flex flex-col items-center justify-center border rounded-xl cursor-pointer ${
+              selectedOption === option.name
+                ? "border-secondary bg-gray-100"
+                : "hover:border-secondary"
+            }`}
           >
-            <img src={option.image} className="w-[50px] h-[50px]" />
+            <img
+              src={option.image}
+              className="w-[50px] h-[50px]"
+              alt={option.name}
+            />
             <h2 className="text-sm mt-2">{option.name}</h2>
           </div>
         ))}
