@@ -14,6 +14,7 @@ const materialTypes = [
     title: "Notes/ Chapters",
     desc: "Read notes to prepare it for Preparation",
     url: "/notes",
+    name: "notes",
   },
   {
     status: "Ready",
@@ -21,6 +22,7 @@ const materialTypes = [
     title: "Flashcard",
     desc: "Flashcard to remember the concepts",
     url: "/flashcard",
+    name: "flashcard",
   },
   {
     status: "Ready",
@@ -28,6 +30,7 @@ const materialTypes = [
     title: "Quiz",
     desc: "Great way to test your knowledge",
     url: "/quiz",
+    name: "quiz",
   },
   {
     status: "Ready",
@@ -35,6 +38,7 @@ const materialTypes = [
     title: "Question/Answer",
     desc: "Help to practice your learning",
     url: "/questionAns",
+    name: "questions",
   },
 ];
 export default function Home() {
@@ -69,7 +73,7 @@ export default function Home() {
             <p className="text-lg font-medium">Study Material</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
               {materialTypes.map((type, index) => (
-                <MaterialTypes details={type} key={index} />
+                <MaterialTypes details={type} courses={courses} key={index} />
               ))}
             </div>
           </div>

@@ -7,6 +7,10 @@ const StudyMaterialSchema = new mongoose.Schema(
     createdBy: { type: String, required: true },
     topic: { type: String, required: true },
     courseLayout: { type: Object, required: true },
+    notes: { type: Boolean, default: false },
+    flashcard: { type: Boolean, default: false },
+    quiz: { type: Boolean, default: false },
+    questions: { type: Boolean, default: false },
   },
   {
     timestamps: true,
