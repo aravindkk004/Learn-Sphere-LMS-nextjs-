@@ -78,7 +78,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-6">
-            <p className="text-lg font-medium">Chapters</p>
+            <p className="text-2xl font-semibold">Chapters</p>
             {courses?.courseLayout?.chapters?.map((chapter, index) => (
               <div className="mt-4" key={index}>
                 <ChapterCard chapter={chapter} />

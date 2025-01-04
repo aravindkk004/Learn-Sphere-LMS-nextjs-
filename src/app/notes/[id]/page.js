@@ -9,10 +9,10 @@ export default function Home() {
   const params = useParams();
   const courseId = params?.id;
   const router = useRouter();
-  const [chapterNo, setChapterNo] = useState(1); // Current chapter
-  const [loading, setLoading] = useState(true); // Loading state
-  const [totalChapters, setTotalChapters] = useState(0); // Total chapters
-  const [chapters, setChapters] = useState([]); // Chapters data
+  const [chapterNo, setChapterNo] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [totalChapters, setTotalChapters] = useState(0);
+  const [chapters, setChapters] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -21,9 +21,8 @@ export default function Home() {
         const response = await axios.get(`/api/notes/get-notes/${courseId}`);
         if (response.status === 200) {
           const data = response.data;
-          console.log("data from api",data);
-          setChapters(data.notes); 
-          setTotalChapters(data.notes?.length || 0); // Update total chapters
+          setChapters(data.notes);
+          setTotalChapters(data.notes?.length || 0);
         }
       } catch (error) {
         console.log(error);
@@ -78,7 +77,11 @@ export default function Home() {
             </div>
 
             <div className="mt-[20px]">
-              <div dangerouslySetInnerHTML={{__html:chapters[chapterNo-1]?.html_content}}></div>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: chapters[chapterNo - 1]?.html_content,
+                }}
+              ></div>
             </div>
           </div>
         </div>
