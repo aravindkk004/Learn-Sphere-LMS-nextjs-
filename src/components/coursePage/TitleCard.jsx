@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react";
 
-const TitleCard = ({ courses }) => {
+const TitleCard = ({ courses, completed }) => {
   const totalChapters = courses?.courseLayout?.chapters?.length;
   // const progress = (2 / 4) * 100;
   const [completedChapters, setCompletedChapters] = useState(0);

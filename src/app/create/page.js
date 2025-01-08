@@ -37,7 +37,7 @@ export default function Home() {
   };
   return (
     <>
-      <div className="mt-[100px] flex flex-col items-center">
+      <div className="mt-[100px] flex flex-col items-center md:px-0 px-[5px]">
         <p className="text-primary font-bold text-4xl text-center">
           Start Building Your Personal Study Material
         </p>
@@ -49,7 +49,7 @@ export default function Home() {
         {page === 0 ? <SelectOptions setInputs={getInputs} /> : null}
         {page === 1 ? <TopicPage setInputs={getInputs} /> : null}
 
-        <div className="mt-[50px] flex justify-between items-center md:w-[80%]">
+        <div className="mt-[50px] flex justify-between items-center md:w-[80%] w-full">
           {page != 0 ? (
             <button
               className="border border-gray-400 px-4 py-2 rounded-lg"

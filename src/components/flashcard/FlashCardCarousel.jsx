@@ -11,7 +11,7 @@ const cards = [
   { front: "5th page front", back: "5th page back" },
 ];
 
-const FlashCardCarousel = () => {
+const FlashCardCarousel = ({ flashcards }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
 
@@ -34,7 +34,7 @@ const FlashCardCarousel = () => {
   return (
     <div className="relative w-full max-w-md mx-auto overflow-hidden mt-10">
       <div className="relative flex h-[380px] transition-transform duration-[1500ms] ease-in-out ">
-        {cards.map((card, index) => (
+        {flashcards?.map((card, index) => (
           <div
             key={index}
             className={`absolute w-full h-full flex items-center transform transition-transform ${

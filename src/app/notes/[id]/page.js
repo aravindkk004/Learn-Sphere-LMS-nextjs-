@@ -38,7 +38,7 @@ export default function Home() {
       <TopNavbar />
       {!loading && (
         <div className="flex justify-center w-full">
-          <div className="w-[80%] p-5">
+          <div className="md:w-[80%] w-full p-5">
             <div className="flex items-center gap-10">
               {/* Previous Button */}
               <button

@@ -9,7 +9,7 @@ const FlashCard = ({ isFlipped, handleClick, front, back }) => {
           onClick={handleClick}
         >
           <div>
-            <h2>{front}</h2>
+            <h2 className="text-center">{front}</h2>
           </div>
         </div>
 
@@ -18,7 +18,7 @@ const FlashCard = ({ isFlipped, handleClick, front, back }) => {
           onClick={handleClick}
         >
           <div>
-            <h2>{back}</h2>
+            <h2 className="text-center">{back}</h2>
           </div>
         </div>
       </ReactCardFlip>

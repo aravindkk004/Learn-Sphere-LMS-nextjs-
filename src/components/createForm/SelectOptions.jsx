@@ -32,7 +32,7 @@ const SelectOptions = ({ setInputs }) => {
   };
 
   return (
-    <div className="mt-[40px] w-[50%]">
+    <div className="mt-[40px] md:w-[50%] md:px-0 px-[20px]">
       <p className="text-lg text-center">
         For Which you want to create your personal study material?
       </p>

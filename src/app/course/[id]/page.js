@@ -6,6 +6,11 @@ import TitleCard from "@/components/coursePage/TitleCard";
 import axios from "axios";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import {
+  generateFlashcards,
+  generateNotes,
+  generateQuiz,
+} from "@/libs/generateContent";
 
 const materialTypes = [
   {
@@ -41,39 +46,63 @@ const materialTypes = [
     name: "questions",
   },
 ];
+
 export default function Home() {
-  const [courses, setCourses] = useState([]);
+  const [courses, setCourses] = useState({});
   const params = useParams();
   const courseId = params?.id;
+  const [completed, setCompleted] = useState(0);
+  const [status, setStatus] = useState(false);
+
   useEffect(() => {
     const getCourseDetails = async () => {
       try {
         const response = await axios.get(`/api/get-course-detail/${courseId}`);
-        console.log(response.data);
-        if (response.status == 200) {
-          const data = response.data;
-          setCourses(data);
-          console.log(typeof data);
+        if (response.status === 200) {
+          setCourses(response.data);
         }
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     getCourseDetails();
-  }, []);
+  }, [courseId]);
+
+  const handleType = (type) => {
+    let output;
+    if (type.name === "notes") {
+      output = generateNotes(courses);
+    } else if (type.name === "flashcard") {
+      output = generateFlashcards(courses);
+    } else if (type.name === "quiz") {
+      output = generateQuiz(courses);
+    }
+    if (output) {
+      setStatus((prevStatus) => !prevStatus);
+      router.refresh();
+    }
+  };
+
   return (
     <>
       <TopNavbar />
       <div className="flex justify-center">
         <div className="md:w-[60%] p-5">
           <div className="mt-2">
-            <TitleCard courses={courses} />
+            <TitleCard courses={courses} completed={completed} />
           </div>
           <div className="mt-6">
             <p className="text-lg font-medium">Study Material</p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
               {materialTypes.map((type, index) => (
-                <MaterialTypes details={type} courses={courses} key={index} />
+                <MaterialTypes
+                  key={index}
+                  details={type}
+                  courses={courses}
+                  isReady={!!courses[type.name]}
+                  handleType={() => handleType(type)}
+                  status={status}
+                />
               ))}
             </div>
           </div>

@@ -58,7 +58,7 @@ const TopicPage = ({ setInputs }) => {
   };
 
   return (
-    <div className="mt-[40px] w-[40%]">
+    <div className="mt-[40px] md:w-[40%] md:px-0 px-[20px]">
       <div>
         <p>
           Enter topic or paste the content for which you want to generate study

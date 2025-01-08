@@ -1,10 +1,30 @@
-"use client"
+"use client";
 import TopNavbar from "@/components/TopNavbar";
 import FlashCardCarousel from "@/components/flashcard/FlashCardCarousel";
-import { useRouter } from "next/navigation";
+import axios from "axios";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const router = useRouter();
+  const params = useParams();
+  const courseId = params?.courseId;
+  const [flashcards, setFlashCards] = useState();
+  useEffect(() => {
+    const getFlashcards = async () => {
+      try {
+        const response = await axios.get(
+          `/api/flashcards/get-flashcard/${courseId}`
+        );
+        if (response.status == 200) {
+          setFlashCards(response.data.Flashcards);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getFlashcards();
+  }, []);
   return (
     <>
       <TopNavbar />
@@ -18,10 +38,15 @@ export default function Home() {
               </p>
             </div>
             <div className="md:flex hidden">
-              <button onClick={() => router.back()} className="bg-primary text-white px-5 py-2 rounded-lg">Go to Course page</button>
+              <button
+                onClick={() => router.back()}
+                className="bg-primary text-white px-5 py-2 rounded-lg"
+              >
+                Go to Course page
+              </button>
             </div>
           </div>
-          <FlashCardCarousel />
+          <FlashCardCarousel flashcards={flashcards} />
         </div>
       </div>
     </>

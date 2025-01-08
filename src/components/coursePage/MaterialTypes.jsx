@@ -1,22 +1,11 @@
 "use client";
-import { generateFlashcards, generateNotes } from "@/libs/generateContent";
+
 import { useRouter } from "next/navigation";
 
-const MaterialTypes = ({ details, courses }) => {
+const MaterialTypes = ({ details, courses, isReady, handleType, status }) => {
   const router = useRouter();
   const courseId = courses?.courseId;
-  const isReady = courses?.[details.name];
 
-  const handleType = () => {
-    if (details.name=="notes"){
-      generateNotes(courses);
-    }else if (details.name=="flashcard") {
-      console.log("flashcard clicked");
-      generateFlashcards(courses);
-    }else if (details.name == "quiz"){
-      generateQuiz(courses);
-    }
-  }
   return (
     <>
       <div className="flex flex-col items-center justify-center p-3 rounded-lg border border-gray-300 shadow-md">
@@ -48,7 +37,7 @@ const MaterialTypes = ({ details, courses }) => {
             className="border border-gray-300 px-4 py-1 rounded-lg mt-2 hover:bg-gray-200"
             onClick={handleType}
           >
-            {isReady ? "View" : "Generate"}
+            {status ? "Generating" : "Generate"}
           </button>
         )}
       </div>
