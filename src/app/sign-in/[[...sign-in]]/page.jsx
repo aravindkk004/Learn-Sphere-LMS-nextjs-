@@ -33,9 +33,11 @@ export default function Page() {
               Welcome to Learn Sphere 🦑
             </h2>
             <p className="mt-4 leading-relaxed text-white/90">
-              Mock Master is an AI-powered platform that simulates real-world
-              interviews, offering personalized feedback and insights to help
-              users master their interview skills.
+              Learn Sphere is a versatile platform for exam preparation, coding
+              practice, job readiness, and more. It allows users to generate
+              personalized notes, quizzes, and flashcards based on their
+              difficulty level. With Learn Sphere, streamline your learning and
+              achieve your goals effectively.
             </p>
           </div>
         </section>

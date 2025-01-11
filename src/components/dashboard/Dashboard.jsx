@@ -29,7 +29,7 @@ const Dashboard = ({ openSideNav, setOpenSideNav }) => {
   }, []);
 
   return (
-    <div className="md:w-[81%] w-full">
+    <div className=" w-full">
       <div className="w-full flex items-center justify-between border-b-2 border-gray-300 py-3 px-5">
         <div>
           <RiMenu2Fill

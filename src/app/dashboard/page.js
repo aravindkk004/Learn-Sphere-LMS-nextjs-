@@ -22,7 +22,7 @@ export default function Home() {
         onClick={() => setOpenSideNav(false)}
       >
         <div
-          className={`w-[80%] bg-white h-full shadow-lg transform transition-transform duration-300 ${
+          className={`w-[81%] bg-white h-full shadow-lg transform transition-transform duration-300 ${
             openSideNav ? "translate-x-0" : "-translate-x-full"
           }`}
           onClick={(e) => e.stopPropagation()}
